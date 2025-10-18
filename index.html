@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dulce Tentación — Catálogo</title>
+  <meta name="description" content="Catálogo interactivo de postres artesanales - Dulce Tentación S.A.S" />
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <img src="assets/logo.png" alt="Dulce Tentación logo" class="site-logo">
+      <div class="brand-text">
+        <h1>Dulce Tentación S.A.S</h1>
+        <p class="tagline">El sabor que enamora cada día — Medellín, Colombia</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h2>Catálogo interactivo de postres</h2>
+          <p>Explora nuestros postres artesanales. Selecciona tamaño, elige sabor y pide por WhatsApp o Instagram con el mensaje preescrito.</p>
+          <div class="cta">
+            <button class="btn primary" onclick="scrollToSection('catalog')">Ver catálogo 🍰</button>
+            <button class="btn outline" onclick="scrollToSection('contact')">Contáctanos</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalog" class="catalog">
+        <h2>Catálogo — Tamaños y precios</h2>
+        <div class="catalog-grid">
+          <div class="card-group">
+            <h3>Postres Medianos</h3>
+            <div class="cards" id="medianos">
+            </div>
+          </div>
+          <div class="card-group">
+            <h3>Postres Grandes</h3>
+            <div class="cards" id="grandes">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <h3>Misión</h3>
+        <p>Endulzar los momentos más especiales de nuestros clientes con postres de excelente calidad y presentación, elaborados con ingredientes naturales y recetas propias.</p>
+        <h3>Visión</h3>
+        <p>Ser la marca preferida de repostería artesanal en Colombia para el año 2030, reconocida por innovación y compromiso con el sabor y la sostenibilidad.</p>
+        <h3>Historia</h3>
+        <p>Dulce Tentación nació en 2021 como un proyecto familiar que convirtió la pasión por la repostería en un oficio: hoy combinamos tradición y creatividad para crear postres que hagan únicos tus momentos especiales.</p>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2>Contáctanos</h2>
+        <p>Comunícate con nosotros por la vía que prefieras.</p>
+        <div class="contact-actions">
+          <a class="btn" id="emailBtn" href="mailto:dulcetentacionjtdcm@gmail.com">✉️ dulcetentacionjtdcm@gmail.com</a>
+          <a class="btn" id="instaBtn" target="_blank" href="https://instagram.com/dulcetentacionjtdcm">📷 @dulcetentacionjtdcm</a>
+          <button class="btn" id="whBtn" onclick="openWhatsApp()">💬 WhatsApp</button>
+        </div>
+      </section>
+
+      <section id="team" class="team">
+        <h2>Equipo y créditos</h2>
+        <p>Este proyecto y catálogo fue desarrollado por:</p>
+        <ul class="team-list">
+          <li>Jesús Urdaneta</li>
+          <li>Tania Borja</li>
+          <li>Carlos Terán</li>
+          <li>Daniela Santos</li>
+          <li>Miguel Ángel Movilla</li>
+        </ul>
+        <div class="legal">NIT: 901.765.432-1 · Registro: Cámara de Comercio de Medellín · Certificación: BPM</div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Dulce Tentación S.A.S</strong><br>
+        <small>Carrera 18 #45-22, Medellín · dulcetentacionjtdcm@gmail.com</small>
+      </div>
+      <div class="copyright">Diseñado por el equipo — © 2025</div>
+    </footer>
+  </div>
+
+  <div class="contact-bar">
+    <button class="cbtn cwh" title="WhatsApp" onclick="openWhatsApp()">WA</button>
+    <a class="cbtn cig" title="Instagram" href="https://instagram.com/dulcetentacionjtdcm" target="_blank">IG</a>
+    <a class="cbtn cmail" title="Correo" href="mailto:dulcetentacionjtdcm@gmail.com">✉</a>
+  </div>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">X</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
