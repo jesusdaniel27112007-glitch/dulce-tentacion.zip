@@ -4,175 +4,129 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dulce Tentación — Catálogo</title>
-  <meta name="description" content="Dulce Tentación — Sabor que enamora. Catálogo de postres para pedir por WhatsApp o Instagram.">
   <link rel="icon" href="assets/logo.png" />
   <style>
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, #fff7f5 0%, #fff0ea 100%);
-      color:#332621;
+      font-family:"Poppins",sans-serif;
+      background:linear-gradient(180deg,#fff0f3 0%,#ffe6eb 100%);
+      color:#4b2e28;
       padding:24px;
-      background-image: url('assets/fresas-bg.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center top;
+      overflow-x:hidden;
     }
-
     .site{max-width:1100px;margin:0 auto;}
     header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
-    .logo{width:64px;height:64px;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.05);}
-    .logo img{width:100%;height:100%;object-fit:cover;border-radius:14px;}
-    .brand h1{margin:0;font-size:22px;color:#3e2723;}
-    .slogan{font-size:13px;color:#8d6e63;}
-
-    .section{
-      background:linear-gradient(180deg,#ffffffcc,#fff8f5cc);
-      border-radius:14px;
-      padding:18px;
-      box-shadow:0 8px 24px rgba(34,34,34,0.05);
-      border:1px solid rgba(232,214,188,0.45);
-      margin-bottom:20px;
-      backdrop-filter: blur(2px);
+    .logo{width:70px;height:70px;border-radius:16px;overflow:hidden;}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand h1{margin:0;font-size:22px;color:#b23a48;}
+    .historia, .about{
+      background:#fffaf8;border:1px solid rgba(255,192,203,0.4);
+      border-radius:14px;padding:18px;margin-bottom:26px;
     }
-    .section h2{margin-top:0;color:#6d4c41;font-size:18px;}
-    .section p{color:#4a3a33}
-
-    .filters{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap;}
-    .chip{
-      background:#fff;
-      border:1px solid #f2d8cc;
-      padding:8px 12px;
-      border-radius:32px;
-      font-size:13px;
-      cursor:pointer;
-      transition:.2s;
-    }
-    .chip.active{background:#ffe6e0;color:#a33b2e;transform:translateY(-2px);}
-
-    .grid{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:center;
-      margin-top:16px;
-    }
-
-    .card{
-      background:linear-gradient(180deg,#fff,#fffaf8);
-      border-radius:14px;
-      padding:16px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.05);
-      border:1px solid rgba(232,214,188,0.5);
-      transition:transform .25s ease, box-shadow .25s ease;
-      width:170px;
-      text-align:center;
-    }
-    .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,0.09);}
-    .name{font-weight:700;font-size:16px;color:#3e2723;}
-    .desc{font-size:13px;color:#6b5a4c;margin:6px 0;}
-    .price{color:#b98537;font-weight:800;font-size:17px;}
-
-    footer{text-align:center;margin-top:26px;color:#6b5a4c;font-size:13px;}
-    @media (max-width:560px){ body{padding:16px} .section{padding:14px} .card{width:140px;} }
+    .chip{background:#fff;border:1px solid #f9c6d0;padding:8px 12px;border-radius:32px;
+      font-size:13px;cursor:pointer;margin-right:8px;}
+    .chip.active{background:#ffe6eb;border:1px solid #f5a6b2;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-bottom:28px;}
+    .card{background:#fff;border-radius:14px;padding:18px;
+      box-shadow:0 10px 30px rgba(34,34,34,0.06);
+      border:1px solid rgba(255,192,203,0.4);}
+    .name{font-weight:600;font-size:16px;color:#b23a48;}
+    .desc{font-size:13px;color:#6b5a4c}
+    .price{font-weight:800;font-size:18px;color:#d65c5c;}
+    footer{text-align:center;color:#6b5a4c;font-size:13px;margin-top:20px;}
   </style>
 </head>
 <body>
   <div class="site">
     <header>
-      <div class="logo"><img src="assets/logo.png" alt="Logo Dulce Tentación"></div>
+      <div class="logo">
+        <img src="assets/logo.png" alt="Logo Dulce Tentación">
+      </div>
       <div class="brand">
         <h1>Dulce Tentación</h1>
-        <div class="slogan">Sabor que enamora</div>
+        <div>Sabor que enamora</div>
       </div>
     </header>
 
-    <!-- HISTORIA -->
-    <section class="section">
-      <h2>Nuestra historia</h2>
-      <p><strong>Dulce Tentación</strong> nació en Cartagena con la idea de compartir momentos dulces llenos de amor y sabor. Empezamos como un pequeño emprendimiento familiar que, con esfuerzo y pasión, se convirtió en una marca reconocida por su calidad, frescura y creatividad en cada postre.</p>
-      <p>Hoy seguimos creciendo gracias a nuestros clientes, quienes disfrutan de cada detalle hecho con el corazón. 🧁🍓</p>
+    <section class="historia">
+      <h2>Nuestra Historia</h2>
+      <p><strong>Dulce Tentación</strong> nació en Cartagena con el sueño de llevar momentos felices a cada mesa. Hoy seguimos creciendo gracias a nuestros clientes, quienes disfrutan de cada detalle hecho con el corazón. 🧁🍓</p>
     </section>
 
-    <!-- CATÁLOGO -->
-    <section class="section">
+    <main>
       <h2>Catálogo</h2>
       <p>Elige el tamaño del postre que más te guste:</p>
-
       <div class="filters">
-        <div class="chip active" data-filter="all">Todos</div>
-        <div class="chip" data-filter="mediano">Medianos</div>
-        <div class="chip" data-filter="grande">Grandes</div>
+        <span class="chip active" data-filter="all">Todos</span>
+        <span class="chip" data-filter="mediano">Medianos</span>
+        <span class="chip" data-filter="grande">Grandes</span>
+        <span class="chip" data-filter="diabetico">Diabéticos</span>
       </div>
 
-      <div class="grid" id="catalogGrid"></div>
-    </section>
+      <section class="grid" id="catalogGrid"></section>
 
-    <!-- MISIÓN Y VISIÓN -->
-    <section class="section">
-      <h2>Misión</h2>
-      <p>Ofrecer postres artesanales de la más alta calidad, elaborados con amor y dedicación, para endulzar cada momento especial.</p>
-      <h2 style="margin-top:16px">Visión</h2>
-      <p>Ser reconocidos en toda Colombia como la pastelería preferida por su innovación, sabor y amor en cada creación.</p>
-    </section>
+      <section class="about">
+        <h3>Misión</h3>
+        <p>Endulzar los momentos más especiales de nuestros clientes con postres artesanales de calidad, hechos con amor y los mejores ingredientes.</p>
+        <h3>Visión</h3>
+        <p>Ser la pastelería más querida de Cartagena, reconocida por su creatividad, sabor inigualable y compromiso con la felicidad de nuestros clientes.</p>
+      </section>
+    </main>
 
-    <footer>
-      © <span id="ano"></span> Dulce Tentación — Hecho con amor en Cartagena 🍓
-    </footer>
+    <footer>© <span id="ano"></span> Dulce Tentación — Hecho con amor.</footer>
   </div>
 
   <script>
     const CATALOG = [
-      // Medianos
-      {id:1, size:'Mediano', category:'mediano', name:'Vainilla', price:50000},
-      {id:2, size:'Mediano', category:'mediano', name:'Vainilla Oreo', price:52000},
-      {id:3, size:'Mediano', category:'mediano', name:'Vainilla Chocolate', price:53000},
-      {id:4, size:'Mediano', category:'mediano', name:'Naranja', price:52000},
-      {id:5, size:'Mediano', category:'mediano', name:'Chocolate', price:60000},
-      {id:6, size:'Mediano', category:'mediano', name:'Zanahoria', price:60000},
-      // Grandes
-      {id:7, size:'Grande', category:'grande', name:'Vainilla', price:65000},
-      {id:8, size:'Grande', category:'grande', name:'Vainilla Oreo', price:70000},
-      {id:9, size:'Grande', category:'grande', name:'Vainilla Chocolate', price:70000},
-      {id:10, size:'Grande', category:'grande', name:'Naranja', price:70000},
-      {id:11, size:'Grande', category:'grande', name:'Chocolate', price:85000},
-      {id:12, size:'Grande', category:'grande', name:'Zanahoria', price:85000}
+      {category:'mediano', name:'Vainilla', size:'Mediano', price:50000},
+      {category:'mediano', name:'Vainilla Oreo', size:'Mediano', price:52000},
+      {category:'mediano', name:'Vainilla Chocolate', size:'Mediano', price:53000},
+      {category:'mediano', name:'Naranja', size:'Mediano', price:52000},
+      {category:'mediano', name:'Chocolate', size:'Mediano', price:60000},
+      {category:'mediano', name:'Zanahoria', size:'Mediano', price:60000},
+      {category:'grande', name:'Vainilla', size:'Grande', price:65000},
+      {category:'grande', name:'Vainilla Oreo', size:'Grande', price:70000},
+      {category:'grande', name:'Vainilla Chocolate', size:'Grande', price:70000},
+      {category:'grande', name:'Naranja', size:'Grande', price:70000},
+      {category:'grande', name:'Chocolate', size:'Grande', price:85000},
+      {category:'grande', name:'Zanahoria', size:'Grande', price:85000},
+      {category:'diabetico', name:'Cheesecake Frutilla', size:'Mediano', price:27000},
+      {category:'diabetico', name:'Cheesecake Frutilla', size:'Grande', price:37000},
+      {category:'diabetico', name:'Tiramisú', size:'Mediano', price:27000},
+      {category:'diabetico', name:'Tiramisú', size:'Grande', price:37000},
     ];
 
     const grid = document.getElementById('catalogGrid');
 
-    function money(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
+    function money(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")}
 
-    function createCard(item){
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="name">${item.name}</div>
-        <div class="desc">${item.size}</div>
-        <div class="price">$${money(item.price)}</div>
-      `;
-      return card;
+    function render(filter='all'){
+      grid.innerHTML='';
+      const items=CATALOG.filter(p=>filter==='all'?true:p.category===filter);
+      items.forEach(item=>{
+        const el=document.createElement('div');
+        el.className='card';
+        el.innerHTML=`
+          <div class="name">${item.name}</div>
+          <div class="desc">${item.size}</div>
+          <div class="price">$${money(item.price)}</div>
+        `;
+        grid.appendChild(el);
+      });
     }
 
-    function render(filter = 'all'){
-      grid.innerHTML = '';
-      const items = CATALOG.filter(i => filter === 'all' ? true : i.category === filter);
-      items.forEach(i => grid.appendChild(createCard(i)));
-    }
+    render();
 
-    render('all');
-
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('click',()=>{
+        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
         chip.classList.add('active');
         render(chip.dataset.filter);
       });
     });
 
-    document.getElementById('ano').textContent = new Date().getFullYear();
+    document.getElementById('ano').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
+
