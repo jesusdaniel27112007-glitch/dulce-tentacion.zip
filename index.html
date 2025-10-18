@@ -14,11 +14,9 @@
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: linear-gradient(180deg, #fff7f5 0%, #fff0ea 100%);
       color:#332621;
-      -webkit-font-smoothing:antialiased;
-      line-height:1.5;
       padding:24px;
       background-image: url('assets/fresas-bg.png');
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center top;
     }
@@ -31,49 +29,60 @@
     .slogan{font-size:13px;color:#8d6e63;}
 
     .section{
-      background:linear-gradient(180deg,#ffffff,#fff8f5);
+      background:linear-gradient(180deg,#ffffffcc,#fff8f5cc);
       border-radius:14px;
       padding:18px;
       box-shadow:0 8px 24px rgba(34,34,34,0.05);
-      border:1px solid rgba(232,214,188,0.5);
+      border:1px solid rgba(232,214,188,0.45);
       margin-bottom:20px;
+      backdrop-filter: blur(2px);
     }
-    .section h2{
-      margin-top:0;
-      color:#6d4c41;
-      font-size:18px;
+    .section h2{margin-top:0;color:#6d4c41;font-size:18px;}
+    .section p{color:#4a3a33}
+
+    .filters{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap;}
+    .chip{
+      background:#fff;
+      border:1px solid #f2d8cc;
+      padding:8px 12px;
+      border-radius:32px;
+      font-size:13px;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .chip.active{background:#ffe6e0;color:#a33b2e;transform:translateY(-2px);}
+
+    .grid{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      justify-content:center;
+      margin-top:16px;
     }
 
-    .intro, .about, .mision, .vision{color:#4a3a33;}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:20px;
-      margin-bottom:24px;
-    }
     .card{
-      background:#fff;
+      background:linear-gradient(180deg,#fff,#fffaf8);
       border-radius:14px;
       padding:16px;
       box-shadow:0 8px 22px rgba(0,0,0,0.05);
       border:1px solid rgba(232,214,188,0.5);
       transition:transform .25s ease, box-shadow .25s ease;
+      width:170px;
+      text-align:center;
     }
-    .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.08);}
-    .name{font-weight:600;font-size:16px;color:#3e2723;}
-    .price{color:#b98537;font-weight:700;}
-    .btn{border:none;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:600;}
-    .btn-whatsapp{background:#e8f5e9;color:#1b5e20;}
-    .btn-instagram{background:#fff0ea;color:#8d6e63;}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,0.09);}
+    .name{font-weight:700;font-size:16px;color:#3e2723;}
+    .desc{font-size:13px;color:#6b5a4c;margin:6px 0;}
+    .price{color:#b98537;font-weight:800;font-size:17px;}
+
     footer{text-align:center;margin-top:26px;color:#6b5a4c;font-size:13px;}
+    @media (max-width:560px){ body{padding:16px} .section{padding:14px} .card{width:140px;} }
   </style>
 </head>
 <body>
   <div class="site">
     <header>
-      <div class="logo">
-        <img src="assets/logo.png" alt="Logo Dulce Tentación">
-      </div>
+      <div class="logo"><img src="assets/logo.png" alt="Logo Dulce Tentación"></div>
       <div class="brand">
         <h1>Dulce Tentación</h1>
         <div class="slogan">Sabor que enamora</div>
@@ -81,28 +90,32 @@
     </header>
 
     <!-- HISTORIA -->
-    <section class="section intro">
+    <section class="section">
       <h2>Nuestra historia</h2>
-      <p><strong>Dulce Tentación</strong> nació del amor por los postres caseros y la pasión por endulzar momentos especiales. Desde Cartagena, comenzamos con recetas familiares llenas de sabor y hoy somos una marca que combina tradición y creatividad en cada detalle.</p>
+      <p><strong>Dulce Tentación</strong> nació en Cartagena con la idea de compartir momentos dulces llenos de amor y sabor. Empezamos como un pequeño emprendimiento familiar que, con esfuerzo y pasión, se convirtió en una marca reconocida por su calidad, frescura y creatividad en cada postre.</p>
+      <p>Hoy seguimos creciendo gracias a nuestros clientes, quienes disfrutan de cada detalle hecho con el corazón. 🧁🍓</p>
     </section>
 
     <!-- CATÁLOGO -->
-    <section class="section catalogo">
+    <section class="section">
       <h2>Catálogo</h2>
-      <p>Elige el tamaño y sabor que más te guste. Pide directo por WhatsApp o visítanos en Instagram.</p>
+      <p>Elige el tamaño del postre que más te guste:</p>
+
+      <div class="filters">
+        <div class="chip active" data-filter="all">Todos</div>
+        <div class="chip" data-filter="mediano">Medianos</div>
+        <div class="chip" data-filter="grande">Grandes</div>
+      </div>
+
       <div class="grid" id="catalogGrid"></div>
     </section>
 
-    <!-- MISIÓN -->
-    <section class="section mision">
+    <!-- MISIÓN Y VISIÓN -->
+    <section class="section">
       <h2>Misión</h2>
-      <p>Ofrecer postres artesanales con ingredientes de calidad, hechos con amor y dedicación, para brindar a cada cliente una experiencia dulce, única y memorable.</p>
-    </section>
-
-    <!-- VISIÓN -->
-    <section class="section vision">
-      <h2>Visión</h2>
-      <p>Ser la pastelería artesanal más reconocida de Cartagena por nuestra innovación, calidad y compromiso con el sabor y la felicidad de nuestros clientes.</p>
+      <p>Ofrecer postres artesanales de la más alta calidad, elaborados con amor y dedicación, para endulzar cada momento especial.</p>
+      <h2 style="margin-top:16px">Visión</h2>
+      <p>Ser reconocidos en toda Colombia como la pastelería preferida por su innovación, sabor y amor en cada creación.</p>
     </section>
 
     <footer>
@@ -112,35 +125,54 @@
 
   <script>
     const CATALOG = [
+      // Medianos
       {id:1, size:'Mediano', category:'mediano', name:'Vainilla', price:50000},
       {id:2, size:'Mediano', category:'mediano', name:'Vainilla Oreo', price:52000},
-      {id:3, size:'Mediano', category:'mediano', name:'Chocolate', price:60000},
-      {id:4, size:'Grande', category:'grande', name:'Naranja', price:70000},
-      {id:5, size:'Grande', category:'grande', name:'Zanahoria', price:85000}
+      {id:3, size:'Mediano', category:'mediano', name:'Vainilla Chocolate', price:53000},
+      {id:4, size:'Mediano', category:'mediano', name:'Naranja', price:52000},
+      {id:5, size:'Mediano', category:'mediano', name:'Chocolate', price:60000},
+      {id:6, size:'Mediano', category:'mediano', name:'Zanahoria', price:60000},
+      // Grandes
+      {id:7, size:'Grande', category:'grande', name:'Vainilla', price:65000},
+      {id:8, size:'Grande', category:'grande', name:'Vainilla Oreo', price:70000},
+      {id:9, size:'Grande', category:'grande', name:'Vainilla Chocolate', price:70000},
+      {id:10, size:'Grande', category:'grande', name:'Naranja', price:70000},
+      {id:11, size:'Grande', category:'grande', name:'Chocolate', price:85000},
+      {id:12, size:'Grande', category:'grande', name:'Zanahoria', price:85000}
     ];
 
     const grid = document.getElementById('catalogGrid');
-    const WA_PHONE = '573245328182';
-    const INSTAGRAM = 'dulcetentacionjtdcm';
 
-    function money(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");}
+    function money(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,"."); }
+
     function createCard(item){
-      const card=document.createElement('div');
-      card.className='card';
-      card.innerHTML=`
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
         <div class="name">${item.name}</div>
-        <div>${item.size}</div>
-        <div class="price">COP ${money(item.price)}</div>
-        <div class="actions">
-          <a class="btn btn-whatsapp" href="https://wa.me/${WA_PHONE}?text=${encodeURIComponent(`Hola, quiero pedir un ${item.size.toLowerCase()} de ${item.name}.`)}" target="_blank">WhatsApp</a>
-          <a class="btn btn-instagram" href="https://instagram.com/${INSTAGRAM}" target="_blank">Instagram</a>
-        </div>`;
+        <div class="desc">${item.size}</div>
+        <div class="price">$${money(item.price)}</div>
+      `;
       return card;
     }
 
-    function render(){grid.innerHTML='';CATALOG.forEach(i=>grid.appendChild(createCard(i)));}
-    render();
-    document.getElementById('ano').textContent=new Date().getFullYear();
+    function render(filter = 'all'){
+      grid.innerHTML = '';
+      const items = CATALOG.filter(i => filter === 'all' ? true : i.category === filter);
+      items.forEach(i => grid.appendChild(createCard(i)));
+    }
+
+    render('all');
+
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        render(chip.dataset.filter);
+      });
+    });
+
+    document.getElementById('ano').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
