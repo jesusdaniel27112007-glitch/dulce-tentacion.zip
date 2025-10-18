@@ -7,214 +7,71 @@
   <meta name="description" content="Dulce Tentación — Sabor que enamora. Catálogo de postres para pedir por WhatsApp o Instagram.">
   <link rel="icon" href="assets/logo.png" />
   <style>
-    /* Reset ligero */
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg, #fff 0%, #fff7f3 100%);
-      color:#222;
+      background: linear-gradient(180deg, #fff7f5 0%, #fff0ea 100%);
+      color:#332621;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.4;
+      line-height:1.5;
       padding:24px;
+      background-image: url('assets/fresas-bg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
     }
 
-    /* Contenedor */
-    .site{
-      max-width:1100px;
-      margin:0 auto;
-    }
+    .site{max-width:1100px;margin:0 auto;}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+    .logo{width:64px;height:64px;border-radius:14px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.05);}
+    .logo img{width:100%;height:100%;object-fit:cover;border-radius:14px;}
+    .brand h1{margin:0;font-size:22px;color:#3e2723;}
+    .slogan{font-size:13px;color:#8d6e63;}
 
-    header{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin-bottom:24px;
-    }
-    .logo{
-      width:64px;
-      height:64px;
-      background:linear-gradient(135deg,#f7e9da,#f3d8c2);
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 6px 18px rgba(0,0,0,0.06);
-      flex:0 0 64px;
-      overflow:hidden;
-    }
-    .logo img{width:100%;height:100%;object-fit:cover}
-
-    .brand{
-      display:flex;
-      flex-direction:column;
-    }
-    .brand h1{
-      margin:0;
-      font-size:20px;
-      letter-spacing:0.2px;
-      color:#1b1b1b;
-    }
-    .slogan{
-      margin-top:4px;
-      font-size:13px;
-      color:#6b5a4c;
-    }
-
-    /* Secciones */
-    .intro{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      margin-bottom:20px;
-      flex-wrap:wrap;
-    }
-    .intro p{margin:0;color:#4a423b}
-
-    .filters{
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-    .chip{
-      background:#fff;
-      border:1px solid #efdfc9;
-      padding:8px 12px;
-      border-radius:32px;
-      font-size:13px;
-      cursor:pointer;
-      box-shadow:0 2px 6px rgba(0,0,0,0.03);
-    }
-    .chip.active{
-      background:linear-gradient(90deg,#f9f0e6,#fff7f0);
-      border:1px solid #e0caa5;
-    }
-
-    /* Grid de tarjetas */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-bottom:28px;
-    }
-    @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:560px){ .grid{grid-template-columns:1fr} }
-
-    .card{
-      background:linear-gradient(180deg,#ffffff,#fffaf6);
+    .section{
+      background:linear-gradient(180deg,#ffffff,#fff8f5);
       border-radius:14px;
       padding:18px;
-      box-shadow:0 10px 30px rgba(34,34,34,0.06);
-      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
-      border:1px solid rgba(232,214,188,0.6);
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      min-height:150px;
+      box-shadow:0 8px 24px rgba(34,34,34,0.05);
+      border:1px solid rgba(232,214,188,0.5);
+      margin-bottom:20px;
     }
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 40px rgba(34,34,34,0.09);
-    }
-
-    .card .title{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:8px;
-    }
-    .name{
-      font-weight:600;
-      font-size:16px;
-      color:#1b1b1b;
-    }
-    .price{
-      font-weight:800;
+    .section h2{
+      margin-top:0;
+      color:#6d4c41;
       font-size:18px;
-      color:#b98537; /* dorado */
-    }
-    .desc{font-size:13px;color:#6b5a4c}
-
-    .actions{
-      margin-top:auto;
-      display:flex;
-      gap:8px;
-      align-items:center;
     }
 
-    /* Botones */
-    .btn{
-      flex:1;
-      padding:10px 12px;
-      border-radius:10px;
-      text-align:center;
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
-      cursor:pointer;
-      border:1px solid transparent;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
+    .intro, .about, .mision, .vision{color:#4a3a33;}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      margin-bottom:24px;
     }
-    .btn-whatsapp{
-      background:linear-gradient(90deg,#e6fbe9,#dff9e0);
-      color:#1b7a3a;
-      border:1px solid rgba(27,122,58,0.12);
-    }
-    .btn-instagram{
-      background:linear-gradient(90deg,#fff7f0,#fff3ea);
-      color:#9b5c3a;
-      border:1px solid rgba(155,92,58,0.08);
-    }
-    .btn:active{transform:translateY(1px)}
-
-    /* Sección info */
-    .about{
-      margin-top:8px;
-      background:linear-gradient(180deg,#fffdfa,#fff8f5);
+    .card{
+      background:#fff;
+      border-radius:14px;
       padding:16px;
-      border-radius:12px;
-      border:1px solid rgba(232,214,188,0.6);
-      color:#4a423b;
-      box-shadow:0 8px 22px rgba(34,34,34,0.03);
+      box-shadow:0 8px 22px rgba(0,0,0,0.05);
+      border:1px solid rgba(232,214,188,0.5);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
-
-    footer{
-      margin-top:26px;
-      font-size:13px;
-      color:#6b5a4c;
-      text-align:center;
-    }
-
-    /* Tag precio pequeño */
-    .tag{
-      background:rgba(185,133,55,0.08);
-      color:#b98537;
-      padding:6px 8px;
-      border-radius:8px;
-      font-weight:700;
-      font-size:13px;
-    }
-
-    /* small responsiveness helpers */
-    .two-cols{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.08);}
+    .name{font-weight:600;font-size:16px;color:#3e2723;}
+    .price{color:#b98537;font-weight:700;}
+    .btn{border:none;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:600;}
+    .btn-whatsapp{background:#e8f5e9;color:#1b5e20;}
+    .btn-instagram{background:#fff0ea;color:#8d6e63;}
+    footer{text-align:center;margin-top:26px;color:#6b5a4c;font-size:13px;}
   </style>
 </head>
 <body>
   <div class="site">
     <header>
-      <div class="logo" aria-hidden="true">
-        <!-- reemplaza con tu logo en assets/logo.png -->
+      <div class="logo">
         <img src="assets/logo.png" alt="Logo Dulce Tentación">
       </div>
       <div class="brand">
@@ -223,120 +80,67 @@
       </div>
     </header>
 
-    <main>
-      <section class="intro">
-        <p><strong>Catálogo</strong> — Elige tamaño y sabor. Pide directo por WhatsApp o visita nuestro Instagram.</p>
-        <div class="filters" role="tablist" aria-label="Filtros">
-          <div class="chip active" data-filter="all">Todos</div>
-          <div class="chip" data-filter="mediano">Medianos</div>
-          <div class="chip" data-filter="grande">Grandes</div>
-        </div>
-      </section>
+    <!-- HISTORIA -->
+    <section class="section intro">
+      <h2>Nuestra historia</h2>
+      <p><strong>Dulce Tentación</strong> nació del amor por los postres caseros y la pasión por endulzar momentos especiales. Desde Cartagena, comenzamos con recetas familiares llenas de sabor y hoy somos una marca que combina tradición y creatividad en cada detalle.</p>
+    </section>
 
-      <!-- GRID: se llenará por JS -->
-      <section class="grid" id="catalogGrid" aria-live="polite"></section>
+    <!-- CATÁLOGO -->
+    <section class="section catalogo">
+      <h2>Catálogo</h2>
+      <p>Elige el tamaño y sabor que más te guste. Pide directo por WhatsApp o visítanos en Instagram.</p>
+      <div class="grid" id="catalogGrid"></div>
+    </section>
 
-      <section class="about">
-        <h3>¿Quiénes somos?</h3>
-        <p><strong>Dulce Tentación</strong> es una pastelería artesanal dedicada a crear postres que enamoran. Pedidos rápidos por WhatsApp y atención personalizada en Instagram.</p>
-        <p><strong>Contacto:</strong> WhatsApp +57 324 532 8182 — Instagram <a href="https://instagram.com/dulcetentacionjtdcm" target="_blank" rel="noopener">@dulcetentacionjtdcm</a></p>
-      </section>
-    </main>
+    <!-- MISIÓN -->
+    <section class="section mision">
+      <h2>Misión</h2>
+      <p>Ofrecer postres artesanales con ingredientes de calidad, hechos con amor y dedicación, para brindar a cada cliente una experiencia dulce, única y memorable.</p>
+    </section>
+
+    <!-- VISIÓN -->
+    <section class="section vision">
+      <h2>Visión</h2>
+      <p>Ser la pastelería artesanal más reconocida de Cartagena por nuestra innovación, calidad y compromiso con el sabor y la felicidad de nuestros clientes.</p>
+    </section>
 
     <footer>
-      © <span id="ano"></span> Dulce Tentación — Hecho con amor.
+      © <span id="ano"></span> Dulce Tentación — Hecho con amor en Cartagena 🍓
     </footer>
   </div>
 
   <script>
-    // Datos del catálogo (puedes editar precios y textos)
     const CATALOG = [
-      // Medianos
       {id:1, size:'Mediano', category:'mediano', name:'Vainilla', price:50000},
       {id:2, size:'Mediano', category:'mediano', name:'Vainilla Oreo', price:52000},
-      {id:3, size:'Mediano', category:'mediano', name:'Vainilla Chocolate', price:53000},
-      {id:4, size:'Mediano', category:'mediano', name:'Naranja', price:52000},
-      {id:5, size:'Mediano', category:'mediano', name:'Chocolate', price:60000},
-      {id:6, size:'Mediano', category:'mediano', name:'Zanahoria', price:60000},
-      // Grandes
-      {id:7, size:'Grande', category:'grande', name:'Vainilla', price:65000},
-      {id:8, size:'Grande', category:'grande', name:'Vainilla Oreo', price:70000},
-      {id:9, size:'Grande', category:'grande', name:'Vainilla Chocolate', price:70000},
-      {id:10, size:'Grande', category:'grande', name:'Naranja', price:70000},
-      {id:11, size:'Grande', category:'grande', name:'Chocolate', price:85000},
-      {id:12, size:'Grande', category:'grande', name:'Zanahoria', price:85000}
+      {id:3, size:'Mediano', category:'mediano', name:'Chocolate', price:60000},
+      {id:4, size:'Grande', category:'grande', name:'Naranja', price:70000},
+      {id:5, size:'Grande', category:'grande', name:'Zanahoria', price:85000}
     ];
 
-    const WA_PHONE = '573245328182'; // +57 3245328182 (formato wa.me)
+    const grid = document.getElementById('catalogGrid');
+    const WA_PHONE = '573245328182';
     const INSTAGRAM = 'dulcetentacionjtdcm';
 
-    const grid = document.getElementById('catalogGrid');
-
-    function money(n){
-      // formatea como 50.000
-      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    }
-
+    function money(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");}
     function createCard(item){
-      const card = document.createElement('article');
-      card.className = 'card';
-      card.dataset.category = item.category;
-      card.innerHTML = `
-        <div class="title">
-          <div>
-            <div class="name">${item.name}</div>
-            <div class="desc">${item.size}</div>
-          </div>
-          <div class="two-cols">
-            <div class="tag">COP</div>
-            <div class="price">${money(item.price)}</div>
-          </div>
-        </div>
-        <div class="desc">Delicioso ${item.name.toLowerCase()} — ideal para compartir.</div>
+      const card=document.createElement('div');
+      card.className='card';
+      card.innerHTML=`
+        <div class="name">${item.name}</div>
+        <div>${item.size}</div>
+        <div class="price">COP ${money(item.price)}</div>
         <div class="actions">
-          <a class="btn btn-whatsapp" role="button" target="_blank" rel="noopener" aria-label="Pedir ${item.name} por WhatsApp">📲 Pedir por WhatsApp</a>
-          <a class="btn btn-instagram" href="https://instagram.com/${INSTAGRAM}" target="_blank" rel="noopener" aria-label="Abrir Instagram">📸 Ver en Instagram</a>
-        </div>
-      `;
-
-      // Configurar link WhatsApp con mensaje automático
-      const waBtn = card.querySelector('.btn-whatsapp');
-      const text = `Hola, quiero pedir un postre *${item.size.toLowerCase()}* de *${item.name}* (precio ${money(item.price)} COP). ¿Está disponible?`;
-      const waUrl = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`;
-      waBtn.setAttribute('href', waUrl);
-
-      // Instagram button could open profile; user can DM desde ahí
-      const igBtn = card.querySelector('.btn-instagram');
-      igBtn.setAttribute('href', `https://instagram.com/${INSTAGRAM}`);
-
+          <a class="btn btn-whatsapp" href="https://wa.me/${WA_PHONE}?text=${encodeURIComponent(`Hola, quiero pedir un ${item.size.toLowerCase()} de ${item.name}.`)}" target="_blank">WhatsApp</a>
+          <a class="btn btn-instagram" href="https://instagram.com/${INSTAGRAM}" target="_blank">Instagram</a>
+        </div>`;
       return card;
     }
 
-    function render(filter='all'){
-      grid.innerHTML = '';
-      const items = CATALOG.filter(i => filter === 'all' ? true : i.category === filter);
-      if(items.length === 0){
-        grid.innerHTML = '<p>No hay productos en esta categoría.</p>';
-        return;
-      }
-      items.forEach(i => grid.appendChild(createCard(i)));
-    }
-
-    // Inicial
+    function render(){grid.innerHTML='';CATALOG.forEach(i=>grid.appendChild(createCard(i)));}
     render();
-
-    // Filtros
-    document.querySelectorAll('.chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const f = chip.dataset.filter === 'all' ? 'all' : (chip.dataset.filter === 'mediano' ? 'mediano' : 'grande');
-        render(f);
-      });
-    });
-
-    // Año en footer
-    document.getElementById('ano').textContent = new Date().getFullYear();
+    document.getElementById('ano').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
