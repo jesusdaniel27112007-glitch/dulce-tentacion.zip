@@ -13,6 +13,12 @@
       color: #4b2e28;
       padding: 50px 40px;
       overflow-x: hidden;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .site { max-width: 1100px; margin: 0 auto; }
@@ -22,6 +28,7 @@
       align-items: center;
       gap: 24px;
       margin-bottom: 50px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .logo {
@@ -35,7 +42,7 @@
 
     .brand h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 28px;
       color: #b23a48;
     }
 
@@ -44,18 +51,10 @@
       color: #6b5a4c;
     }
 
-    .historia, .about {
-      background: #fffaf8;
-      border: 1px solid rgba(255, 192, 203, 0.4);
-      border-radius: 14px;
-      padding: 28px;
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-
-    h2, h3 {
+    h2 {
       color: #b23a48;
       margin-top: 0;
+      text-align: center;
     }
 
     .chip {
@@ -68,6 +67,7 @@
       margin-right: 10px;
       margin-bottom: 10px;
       display: inline-block;
+      transition: all 0.3s ease;
     }
 
     .chip.active {
@@ -75,13 +75,19 @@
       border: 1px solid #f5a6b2;
     }
 
-    .filters { margin: 20px 0 30px; }
+    .chip:hover {
+      background: #fddce5;
+      transform: scale(1.05);
+    }
+
+    .filters { margin: 20px 0 40px; text-align: center; }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 28px;
       margin-bottom: 50px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     .card {
@@ -90,12 +96,22 @@
       padding: 24px;
       box-shadow: 0 10px 30px rgba(34, 34, 34, 0.06);
       border: 1px solid rgba(255, 192, 203, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s;
+      opacity: 0;
+      animation: bounceIn 1s forwards;
+    }
+
+    /* ✨ Animación de rebote suave */
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      50% { opacity: 1; transform: translateY(-5px) scale(1.05); }
+      70% { transform: translateY(3px) scale(0.98); }
+      100% { transform: translateY(0) scale(1); }
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 35px rgba(34, 34, 34, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 14px 35px rgba(34, 34, 34, 0.1);
     }
 
     .name {
@@ -138,29 +154,16 @@
       </div>
     </header>
 
-    <section class="historia">
-      <h2>Nuestra Historia</h2>
-      <p><strong>Dulce Tentación</strong> nació en Cartagena con el sueño de llevar momentos felices a cada mesa. Hoy seguimos creciendo gracias a nuestros clientes, quienes disfrutan de cada detalle hecho con el corazón. 🧁🍓</p>
-    </section>
-
     <main>
       <h2>Catálogo</h2>
-      <p>Elige el tamaño del postre que más te guste:</p>
       <div class="filters">
         <span class="chip active" data-filter="all">Todos</span>
-        <span class="chip" data-filter="Mediano">Medianos</span>
-        <span class="chip" data-filter="Grande">Grandes</span>
-        <span class="chip" data-filter="Diabetico">Diabéticos</span>
+        <span class="chip" data-filter="mediano">Medianos</span>
+        <span class="chip" data-filter="grande">Grandes</span>
+        <span class="chip" data-filter="diabetico">Diabéticos</span>
       </div>
 
       <section class="grid" id="catalogGrid"></section>
-
-      <section class="about">
-        <h3>Misión</h3>
-        <p>Endulzar los momentos más especiales de nuestros clientes con postres artesanales de calidad, hechos con amor y los mejores ingredientes.</p>
-        <h3>Visión</h3>
-        <p>Ser la pastelería más querida de Cartagena, reconocida por su creatividad, sabor inigualable y compromiso con la felicidad de nuestros clientes.</p>
-      </section>
     </main>
 
     <footer>© <span id="ano"></span> Dulce Tentación — Hecho con amor.</footer>
@@ -180,10 +183,10 @@
       {category:'grande', name:'Naranja', size:'Grande', price:70000},
       {category:'grande', name:'Chocolate', size:'Grande', price:85000},
       {category:'grande', name:'Zanahoria', size:'Grande', price:85000},
-      {category:'diabetico', name:'Cheesecake Frutilla', size:'Mediano', price:27000},
-      {category:'diabetico', name:'Cheesecake Frutilla', size:'Grande', price:37000},
-      {category:'diabetico', name:'Tiramisú', size:'Mediano', price:27000},
-      {category:'diabetico', name:'Tiramisú', size:'Grande', price:37000},
+      {category:'diabetico', name:'Cheesecake Frutilla (Diabético)', size:'Mediano', price:27000},
+      {category:'diabetico', name:'Cheesecake Frutilla (Diabético)', size:'Grande', price:37000},
+      {category:'diabetico', name:'Tiramisú (Diabético)', size:'Mediano', price:27000},
+      {category:'diabetico', name:'Tiramisú (Diabético)', size:'Grande', price:37000},
     ];
 
     const grid = document.getElementById('catalogGrid');
@@ -193,9 +196,10 @@
     function render(filter='all'){
       grid.innerHTML='';
       const items=CATALOG.filter(p=>filter==='all'?true:p.category===filter);
-      items.forEach(item=>{
+      items.forEach((item,i)=>{
         const el=document.createElement('div');
         el.className='card';
+        el.style.animationDelay=`${i*0.08}s`;
         el.innerHTML=`
           <div class="name">${item.name}</div>
           <div class="desc">${item.size}</div>
